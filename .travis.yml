@@ -1,0 +1,21 @@
+language: php
+
+matrix:
+  include:
+    - php: 5.5
+      env: COMPOSER_FLAGS="--prefer-lowest"
+    - php: 5.6
+    - php: 7.0
+      env: COLLECT_COVERAGE="--coverage-clover build/coverage.clover"
+    - php: hhvm
+
+before_script:
+  - travis_retry composer self-update
+  - travis_retry composer install --no-interaction --prefer-source ${COMPOSER_FLAGS}
+
+script:
+  - vendor/bin/phpunit ${COLLECT_COVERAGE}
+
+after_script:
+  - if [[ $COLLECT_COVERAGE ]]; then travis_retry wget https://scrutinizer-ci.com/ocular.phar; fi
+  - if [[ $COLLECT_COVERAGE ]]; then php ocular.phar code-coverage:upload --format=php-clover build/coverage.clover; fi
