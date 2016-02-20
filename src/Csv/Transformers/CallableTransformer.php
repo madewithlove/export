@@ -5,8 +5,6 @@ use Madewithlove\Export\Csv\Transformer;
 
 class CallableTransformer implements Transformer
 {
-    use Headers;
-
     /**
      * @var callable
      */

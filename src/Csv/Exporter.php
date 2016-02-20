@@ -1,7 +1,6 @@
 <?php
 namespace Madewithlove\Export\Csv;
 
-use Iterator;
 use Madewithlove\Export\Csv\Traits\LeagueCsv;
 use Madewithlove\Export\Csv\Traits\LeagueWriter;
 use Madewithlove\Export\Exporter as ExporterContract;
@@ -16,40 +15,44 @@ class Exporter implements ExporterContract
     private $transformer;
 
     /**
-     * @var \Iterator
+     * @var \Traversable|array
      */
-    private $iterator;
+    private $items = [];
 
     /**
      * Exporter constructor.
      *
      * @param \Madewithlove\Export\Csv\Transformer $transformer
-     * @param \Iterator $iterator
+     * @param \Traversable|array $items
      */
-    public function __construct(Transformer $transformer = null, Iterator $iterator = null)
+    public function __construct(Transformer $transformer = null, $items = [])
     {
         $this->transformer = $transformer;
-        $this->iterator = $iterator;
+        $this->items = $items;
     }
 
     /**
-     * @param \Iterator $iterator
+     * @param \Traversable|array $items
      *
      * @return static
      */
-    public function setIterator(Iterator $iterator)
+    public function setItems($items)
     {
-        $this->iterator = $iterator;
+        $this->items = $items;
 
         return $this;
     }
 
     /**
      * @param \Madewithlove\Export\Csv\Transformer $transformer
+     *
+     * @return static
      */
     public function setTransformer(Transformer $transformer)
     {
+        $this->$transformer = $transformer;
 
+        return $this;
     }
 
     /**
@@ -57,6 +60,6 @@ class Exporter implements ExporterContract
      */
     public function getContent()
     {
-        return (string) $this->writer($this->transformer)->insertAll($this->iterator);
+        return (string) $this->writer($this->transformer)->insertAll($this->items);
     }
 }

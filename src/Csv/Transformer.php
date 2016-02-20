@@ -9,9 +9,4 @@ interface Transformer
      * @return array
      */
     public function transform(array $row);
-
-    /**
-     * @return array
-     */
-    public function getHeaders();
 }

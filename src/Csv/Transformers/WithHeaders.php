@@ -1,7 +1,7 @@
 <?php
 namespace Madewithlove\Export\Csv\Transformers;
 
-trait Headers
+trait WithHeaders
 {
     protected $headers = [];
 

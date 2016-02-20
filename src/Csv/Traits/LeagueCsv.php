@@ -3,6 +3,7 @@ namespace Madewithlove\Export\Csv\Traits;
 
 use League\Csv\Writer;
 use Madewithlove\Export\Csv\Transformer;
+use Madewithlove\Export\Csv\WithHeaders;
 use SplTempFileObject;
 
 trait LeagueCsv
@@ -12,14 +13,18 @@ trait LeagueCsv
      *
      * @return \League\Csv\Writer
      */
-    private function writer(Transformer $transformer)
+    private function writer(Transformer $transformer = null)
     {
         $writer = Writer::createFromFileObject(new SplTempFileObject());
 
-        if ($headers = $transformer->getHeaders()) {
-            $writer->insertOne($headers);
+        if ($transformer instanceof WithHeaders) {
+            $writer->insertOne($transformer->getHeaders());
         }
 
-        return $writer->addFormatter([$transformer, 'transform']);
+        if ($transformer instanceof Transformer) {
+            $writer->addFormatter([$transformer, 'transform']);
+        }
+
+        return $writer;
     }
 }
