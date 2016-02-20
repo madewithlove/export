@@ -2,7 +2,6 @@
 namespace Madewithlove\Export\Http;
 
 use Zend\Diactoros\Response;
-use Zend\Diactoros\Stream;
 
 trait Psr7Response
 {

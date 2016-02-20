@@ -3,6 +3,9 @@ namespace Madewithlove\Export\Csv\Transformers;
 
 trait WithHeaders
 {
+    /**
+     * @var array
+     */
     protected $headers = [];
 
     /**

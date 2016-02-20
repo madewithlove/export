@@ -11,26 +11,25 @@ class CallableTransformer implements Transformer
     private $wrapped;
 
     /**
-     * CallableTransformer constructor.
+     * @param callable $transformer
      *
-     * @param callable $wrapped
+     * @return static
      */
-    public function __construct(callable $wrapped)
+    public static function fromCallable(callable $transformer)
     {
-        $this->wrapped = $wrapped;
-    }
-
-    public static function fromCallable(callable $tranformer)
-    {
-        return new static($tranformer);
+        return (new static())->setTransformer($transformer);
     }
 
     /**
      * @param callable $wrapped
+     *
+     * @return static
      */
     public function setTransformer(callable $wrapped)
     {
         $this->wrapped = $wrapped;
+
+        return $this;
     }
 
     /**

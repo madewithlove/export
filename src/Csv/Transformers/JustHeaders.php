@@ -2,10 +2,10 @@
 namespace Madewithlove\Export\Csv\Transformers;
 
 use Madewithlove\Export\Csv\Transformer;
-use Madewithlove\Export\Csv\WithHeaders;
 use Madewithlove\Export\Csv\Transformers\WithHeaders as WithHeadersTrait;
+use Madewithlove\Export\Csv\WithHeaders as WithHeadersContract;
 
-class JustHeaders implements Transformer, WithHeaders
+class JustHeaders implements Transformer, WithHeadersContract
 {
     use WithHeadersTrait;
 
