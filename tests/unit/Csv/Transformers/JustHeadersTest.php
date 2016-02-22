@@ -12,7 +12,7 @@ class JustHeadersTest extends PHPUnit_Framework_TestCase
     public function implements_contracts()
     {
         // Arrange
-        $transformer = (new JustHeaders())->setHeaders(['header 1']);
+        $transformer = JustHeaders::fromHeaders([]);
 
         // Act
 
