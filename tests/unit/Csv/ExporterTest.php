@@ -5,10 +5,8 @@ use ArrayIterator;
 use InvalidArgumentException;
 use Madewithlove\Export\Csv\Exporter;
 use Madewithlove\Export\Csv\Transformers\CallableTransformer;
-use Madewithlove\Export\Csv\Transformers\JustHeaders;
 use Madewithlove\Export\Csv\Transformers\WithHeadersDecorator;
 use Madewithlove\Export\Exporter as ExporterContract;
-use Prophecy\Call\Call;
 
 class ExporterTest extends \PHPUnit_Framework_TestCase
 {
@@ -65,12 +63,14 @@ class ExporterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("foo,bar\n", $export);
     }
 
-    /** @test */
+    /**
+     * @test
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Expected $items to be array or a \Traversable.
+     */
     public function fails_when_given_invalid_items()
     {
         // Arrange
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Expected $items to be array or a \Traversable.');
 
         $exporter = new Exporter();
 
