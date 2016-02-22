@@ -23,7 +23,7 @@
   },
   "require-dev": {
     "league/csv": "^8.0",
-    "phpunit/phpunit": "^5.2",
+    "phpunit/phpunit": "^4.8",
     "symfony/http-foundation": "^2.6|^3.0",
     "zendframework/zend-diactoros": "^1.3"
   },
