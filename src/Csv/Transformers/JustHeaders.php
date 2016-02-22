@@ -10,6 +10,16 @@ class JustHeaders implements Transformer, WithHeadersContract
     use WithHeadersTrait;
 
     /**
+     * @param array $headers
+     *
+     * @return static
+     */
+    public static function fromHeaders(array $headers)
+    {
+        return (new static())->setHeaders($headers);
+    }
+
+    /**
      * @param array $row
      *
      * @return array
