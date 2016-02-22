@@ -26,7 +26,7 @@ $users = [
 $exporter = new Madewithlove\Export\Csv\Exporter();
 
 // Create a new custom Transformer object (an anonymous class, only in PHP 7)
-$transformer = new class() implements Madewithlove\Export\Csv\Transformer, Madewithlove\Export\Csv\WithHeaders {
+$transformer = new class implements Madewithlove\Export\Csv\Transformer, Madewithlove\Export\Csv\WithHeaders {
     public function getHeaders()
     {
         return ['username', 'email'];
@@ -45,7 +45,7 @@ $exporter->setItems($users);
 $exporter->setTransformer($transformer);
 
 // New controller being (an anonymous class, only in PHP 7)
-$controller = new class () {
+$controller = new class {
     use Madewithlove\Export\Http\Psr7Response;
 
     /**
