@@ -11,7 +11,7 @@ matrix:
 
 before_script:
   - travis_retry composer self-update
-  - travis_retry composer install --no-interaction --prefer-source ${COMPOSER_FLAGS}
+  - travis_retry composer update --no-interaction --prefer-source ${COMPOSER_FLAGS}
 
 script:
   - vendor/bin/phpunit ${COLLECT_COVERAGE}
