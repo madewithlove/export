@@ -3,6 +3,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/madewithlove/export.svg?style=flat-square)](https://packagist.org/packages/madewithlove/export)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/madewithlove/export/master.svg?style=flat-square)](https://travis-ci.org/madewithlove/export)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/madewithlove/export.svg?style=flat-square)](https://scrutinizer-ci.com/g/madewithlove/export)
 [![Quality Score](https://img.shields.io/scrutinizer/g/madewithlove/export.svg?style=flat-square)](https://scrutinizer-ci.com/g/madewithlove/export)
 
 ## Usage
