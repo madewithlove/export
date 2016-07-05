@@ -1,6 +1,7 @@
 <?php
 namespace Madewithlove\Export\Http;
 
+use Psr\Http\Message\StreamInterface;
 use Zend\Diactoros\Response;
 
 trait Psr7Response
@@ -17,8 +18,12 @@ trait Psr7Response
 
         $response = new Response();
 
-        $body = $response->getBody();
-        $body->write($content);
+        if (is_string($content)) {
+            $body = $response->getBody();
+            $body->write($content);
+        } elseif ($content instanceof StreamInterface) {
+            $body = $content;
+        }
 
         return $response
             ->withBody($body)
